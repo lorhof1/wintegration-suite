@@ -2,6 +2,9 @@
 #This script moves the windows user data to the linux system
 #Usage: bash winmove.sh [windows partition] [user]
 #Example: bash winmove.sh /dev/sda2 admin
+echo "winmove script by lorhof1 (part of wintegration suite) | github.com/lorhof1/wintegration-suite"
+
+#check if enough arguments provided and give instructions if needed
 if [ "$1" = "" ]
 then
   echo "missing argument"
@@ -10,3 +13,19 @@ then
   exit
 fi
 
+#save user directory before elevation
+cd ~/
+target="$(pwd)"
+
+#gain root privileges
+echo "Please enter your Password"
+sudo su
+
+#mount win drive
+mkdir "/mount/winmove-mountpoint"
+mount "$1" "/mount/winmove-mountpoint"
+
+#save source directory
+source="/mount/winmove-mountpoint/users/$2/"
+
+#move stuff
