@@ -29,3 +29,9 @@ mount "$1" "/mount/winmove-mountpoint"
 source="/mount/winmove-mountpoint/users/$2/"
 
 #move stuff
+mv -R "$source/Downloads" "$target/Downloads"
+mv -R "$source/Documents" "$target/Documents"
+mv -R "$source/Desktop" "$target/Desktop"
+mv -R "$source/Music" "$target/Music"
+mv -R "$source/Pictures" "$target/Pictures"
+mv -R "$source/Videos" "$target/Videos
